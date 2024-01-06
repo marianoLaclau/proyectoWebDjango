@@ -1,0 +1,47 @@
+
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<!-- Uso de Crispy Forms para dar formato -->
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+
+
+<h2 class="text-center" style=" background-color: #F2AC29;
+    color: #ffffff;
+    padding: 1%;
+    margin: 1% auto;
+    border-radius: 20px;
+    width: 40%;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);">
+    <strong>Iniciar Sesion</strong>
+</h2>
+
+
+<div class="login-form">
+    <form method="post" action="" style="color: antiquewhite;">
+
+        {% csrf_token %} 
+        
+        {{form| crispy}}
+        
+        <br><center>
+        <button type="submit" class="btn btn-danger">Ingresar</button>
+        </center> 
+        
+        {% if messages %}
+            {% for mensaje in messages %}
+                <br><span class="alert alert-{{mensaje.tags}}">{{mensaje}}</span>
+            {% endfor %}
+        {% endif %}
+
+    </form>
+
+</div>
+
+{% endblock %}
