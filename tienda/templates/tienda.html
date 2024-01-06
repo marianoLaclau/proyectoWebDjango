@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+<style>
+    /* Estilos comunes para ambos templates */
+    
+    .contenedor {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2% 7%;
+        width: 90%;
+    }
+
+    .item {
+       margin: 3% auto;
+       width: 30%;
+    }
+
+    .item > .imgn {
+        padding: 1%;
+        width: 100%;
+        max-height: 150px;
+        overflow: hidden;
+    }
+
+    .item > .imgn > img {
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+    }
+
+
+    .carrito {
+        width: 10%;
+        position: absolute;
+        right: 12%;
+        z-index: 10;
+    }
+
+    .carrito-icono {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 8%;
+        right: 7%;
+        color: antiquewhite;
+        top: 50%;
+        z-index: 30;
+    }
+
+    .carrito-icono > img {
+        width: 40%;
+        filter: invert(1);
+        z-index: 30;
+        margin-right: 7%;
+    }
+
+    .carrito-icono > img:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Manejar el colapso manualmente al hacer clic en .carrito-icono
+        $('.carrito-icono').on('click', function() {
+            $('#collapseExample').toggleClass('show');
+        });
+    });
+</script>
+
+
+<div class="carrito-icono">
+    <img src="{% static '/img/cart4.svg' %}" alt="">
+    <span style="width: 20%;">({{total_productos}})</span>
+</div>
+
+<div class="collapse" id="collapseExample">
+    <div class="carrito">
+        {% include "widget.html" %}
+    </div>
+</div>
+
+{% if pedido_realizado and not request.session.carro %}
+    <div style="width: 45%; float: right;">
+        {% include "pedido_exito.html" %}
+    </div>   
+{% endif %}
+
+
+<div class="dropdown" style="margin: 1%;">
+    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Seleccione Categoria:
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'Tienda' %}">Todos</a>
+        {% for categ in categorias %}
+          <a class="dropdown-item" href="?categoria_id={{ categ.id }}" {% if categ.id == categoria_id %}class="active"{% endif %}>{{ categ.nombre }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Agregar categorias.html aquí -->
+
+<!-- Lista de productos -->
+<div class="contenedor">
+    {% for producto in productos %}
+        <div class="card item">
+            <div class="imgn">
+                <img src="{{ producto.imagen.url }}" class="" alt="...">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">Us$ {{ producto.precio }}</p>
+                <div class="card-footer text-center">
+                    <a href="{% url 'carro:agregar' producto.id %}" class="btn btn-danger">¡Agregar al carrito!</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+
+
+

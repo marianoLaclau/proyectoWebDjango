@@ -1,0 +1,90 @@
+<style>
+    td, th  {
+  border: 1px solid white;
+}
+
+
+</style>
+
+
+
+<table class="table  table-primary" style="border-color: white; background-color: #4BA69D; border-collapse: collapse;">
+
+    <thead>  <!----- Cabecera ----->
+        <tr> <!-- Fila -->
+            <th colspan="3" class="text-center bg-info">
+                Carro Compras
+            </th>
+        </tr>
+
+        <tr > <!-- Fila -->
+            <th style="border: 1px solid white;">Producto</th>
+            <th style="border: 1px solid white;">Cantidad</th>
+            <th style="border: 1px solid white;" >Agregar</th>
+        </tr>
+    </thead>
+
+    
+    
+    <tbody> <!-----Cuerpo----->
+        {% if request.session.carro.items %}
+            {% for key,value in request.session.carro.items %}
+                <tr class="text-center"> <!-- Fila -->
+                    <td>{{value.nombre}}</td>
+                    <td>{{value.cantidad}}</td>
+                    <td>
+                        <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-danger">+</a>
+                        <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-danger">-</a>
+                        <p >${{value.precio}}</p>
+                    </td>
+                </tr>
+            {% endfor %}
+        
+        {% else %} 
+            <tr>  <!-- Fila -->
+                <td colspan="3">
+                    <div class="alert alert-dark text-center">
+                        Sin productos
+                    </div>
+                </td>
+            </tr>   
+        
+        {% endif %}
+    </tbody>
+
+    
+    
+    <tfoot> <!-----Footer----->
+        
+        <tr><!-- Fila -->
+            <td colspan="2">
+               <strong>Total : Us$ {{importe_total_carro}} </strong> 
+            </td>
+            <td colspan="1">
+                <a href="{% url 'carro:limpiar'  %}" class="btn btn-sm btn-danger text-center">Clean</a>
+            </td>
+        </tr>
+        {% if request.user.is_authenticated %}
+            
+            {% if request.session.carro.items %}
+                <tr>  <!-- Fila -->
+                    <td colspan="3" style="text-align: center;">
+                        <a href="{% url 'Pedido' %}" class="btn btn-danger">
+                            Realizar Compra
+                        </a>
+                    </td>
+                </tr>
+            {% endif %}      
+        
+        {% else %}
+        <tr>  <!-- Fila -->
+            <td colspan="3">
+                <div class="alert alert-dark text-center">
+                    <a style="color: black;" href="{% url 'Login' %}">Inicia sesion para comprar</a>
+                </div>
+            </td>
+        </tr>           
+        {% endif %}        
+    </tfoot>
+
+</table>
