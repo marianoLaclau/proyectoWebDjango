@@ -1,19 +1,38 @@
-## Proyecto final integrador del curso Full Stack Python de Codo a Codo 4.0
+# Proyecto Web Integrador | Full Stack Python | Codo a Codo 4.0
 
-Este proyecto web fue realizado en el marco de un examen final integrador.
+## Este proyecto web fue realizado en el marco de un examen final integrador de desarrollo web.
 
-### Proyecto web completo realizado con el framework Django
+**Descripción del Proyecto**
 
-El proyecto no cuenta con documentacion especifica , ya que su finalidad era hacer una muestra de la integracion de Django al backend.
-Por tal motivo no cuenta con un gran trabajo en el front-end y como consecuencia tampoco es responsive.Está optimizado para ordenadores.
+El proyecto consiste en una aplicación web completa desarrollada con el framework Django. Su principal objetivo es demostrar la integración de Django en el backend. Por tal motivo, no se ha realizado un gran trabajo en el frontend y, como consecuencia, la aplicación no es responsive y está optimizada para ordenadores.
 
 
-Mas alla de lo mencionado , el sitio es completamente funcional , cuenta con varias secciones , incluyendo login , registro y 
-una tienda , con un carro de compras , que si bien funciona de manera correcta , no cuenta con pasarela de pago , al realizar el pedido
-se implementó el envio de un email al usuario con los detalles de la compra .
-Tanto la tienda , la seccion de servicios y el blog , se administran a traves del panel de admin que proporciona Django y los datos se guardan
-en una base de datos SQLite .
+A pesar de estas limitaciones, el sitio es completamente funcional y cuenta con varias secciones, incluyendo:
 
-Como parte de la consigna , el proyecto ha sido desplegado en el servidor Pythonanywhere , y actualmente se encuentra activo.
+Login y Registro de usuarios.
 
-Link para ir al sitio web : http://marianolaclau.pythonanywhere.com/
+Una tienda en línea con un carrito de compras. Aunque no cuenta con pasarela de pago, al realizar un pedido se envía un correo electrónico al usuario con los detalles de la compra.
+
+Sección de servicios y un blog, ambos administrados a través del panel de administración que proporciona Django.
+
+Los datos se almacenan en una base de datos SQLite.
+
+Tecnologías Utilizadas
+
+Django: Framework web utilizado para el desarrollo del backend.
+
+SQLite: Sistema de gestión de bases de datos utilizado para almacenar la información.
+
+Implementación y Despliegue
+El proyecto , como parte de la consigna, ha sido desplegado en el servidor PythonAnywhere y actualmente se encuentra activo. Puede acceder al sitio web en el siguiente enlace:
+
+[Link a la Pagina](https://marianolaclau.pythonanywhere.com/)
+
+
+Notas Adicionales
+
+- La aplicación no cuenta con documentación específica.
+
+- El diseño frontend es básico y no es responsive.
+
+- La funcionalidad de la tienda incluye el envío de correos electrónicos con los detalles de la compra, pero no se implementó una pasarela de pago.
