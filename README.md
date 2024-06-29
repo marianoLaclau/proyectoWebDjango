@@ -18,13 +18,11 @@ A pesar de estas limitaciones, el sitio es completamente funcional y cuenta con 
 Los datos se almacenan en una base de datos SQLite.
 
 
-
 **Tecnologías Utilizadas**
 
 *Django:* Framework web utilizado para el desarrollo del backend.
 
 *SQLite:* Sistema de gestión de bases de datos utilizado para almacenar la información.
-
 
 
 **Implementación y Despliegue**
@@ -34,7 +32,6 @@ El proyecto , como parte de la consigna, ha sido desplegado en el servidor Pytho
 Puede acceder al sitio web en el siguiente enlace:
 
 [Link a la Pagina](https://marianolaclau.pythonanywhere.com/)
-
 
 
 **Notas Adicionales**
